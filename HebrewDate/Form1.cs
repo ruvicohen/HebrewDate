@@ -107,8 +107,20 @@ namespace HebrewDate
                 string result;
                 if (dayInMonth == 30)
                 {
-                    //string FirstMonth = $"יום שלשים לחדש{}"
-                    result = $" {Days[day]}{DaysMonth[dayInMonth]}{month} {Years[year]}".Trim();
+                    string FirstMonth = "";
+                    if (Months.IndexOf(month) == 13)
+                    {
+                        FirstMonth = $"יום שלשים לחדש {month} שהוא ראש חודש {Months[1]}";
+                    }
+                    else if (Months.IndexOf(month) == 5)
+                    {
+                        FirstMonth = $"יום שלשים לחדש {month} שהוא ראש חודש {Months[8]}";
+                    }
+                    else
+                    {
+                        FirstMonth = $"יום שלשים לחדש {month} שהוא ראש חודש {Months[Months.IndexOf(month) + 1]}";
+                    }
+                    result = $" {Days[day]} {FirstMonth} {Years[year]}".Trim();
                 }
                 else
                 {
